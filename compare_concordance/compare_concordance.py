@@ -1,4 +1,4 @@
-'''Statistical inference about correlated censored C-indices.'''
+'''Statistical inference about correlated right-censored C-indices.'''
 
 import ctypes
 
