@@ -31,7 +31,7 @@ def estimate_concordance(time, status, score):
     timeX = np.asarray(time).astype(np.float64)
     timeX = timeX.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
 
-    statusX = np.asarray(status).astype(int)
+    statusX = np.asarray(status).astype(np.int32)
     statusX = statusX.ctypes.data_as(ctypes.POINTER(ctypes.c_int))
 
     scoreY = np.asarray(score).astype(np.float64)

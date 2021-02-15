@@ -1,7 +1,37 @@
 compare\_concordance
 ====================
 
-This Python package implements a statistical test for the comparison of correlated right-censored concordance indices. The code is derived entirely from the GPLv3-licensed R package [compareC](https://cran.r-project.org/web/packages/compareC/index.html). Accordingly, this package is also licensed under GPLv3. If you use it in published work, you should cite the original authors' paper.
+This Python package implements a statistical test for the comparison of correlated right-censored concordance indices. The code is derived entirely from the GPLv3-licensed R package [compareC](https://cran.r-project.org/web/packages/compareC/index.html). Accordingly, this package is also licensed under GPLv3. If you use it in published work, you should cite the original authors' paper (see below).
+
+Installation
+------------
+
+First, build the C library:
+
+    $ python3 setup.py build_ext
+
+Then, install using Pip:
+
+    $ pip3 install .
+
+This has been tested on 64-bit Linux with GCC version 7.5.0.
+
+Usage
+-----
+
+```python
+from compare_concordance import compare_concordance
+
+scores_1 = model1.predict(x)
+scores_2 = model2.predict(x)
+
+concordance_1, concordance2, difference, zscore, pvalue = compare_concordance(
+    y['time'],
+    y['status'],
+    scores_1,
+    scores_2
+)
+```
 
 Citation
 --------
