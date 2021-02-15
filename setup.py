@@ -11,7 +11,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="compare_concordance", # Replace with your own username
+    name="compare_concordance",
     version="0.0.1",
     author="Walter Nelson",
     author_email="walterj.nelson@mail.utoronto.ca",
@@ -23,10 +23,12 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
-        "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
     py_modules=["compare_concordance"],
     ext_modules=[compareC],
-    data_files=[("compare_concordance", ["build/lib.linux-x86_64-3.6/compareC.cpython-36m-x86_64-linux-gnu.so"])]
+    data_files=[
+        ("compare_concordance",
+         ["build/lib.linux-x86_64-3.6/compareC.cpython-36m-x86_64-linux-gnu.so"])
+    ]
 )

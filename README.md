@@ -14,7 +14,7 @@ Then, install using Pip:
 
     $ pip3 install .
 
-This has been tested on 64-bit Linux with GCC version 7.5.0.
+This has been tested on 64-bit Linux with GCC version 7.5.0 and Python 3.6. If the installation step fails, it may be because your system names the .so file differently than expected.
 
 Usage
 -----
