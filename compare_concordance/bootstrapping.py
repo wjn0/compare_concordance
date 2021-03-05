@@ -29,7 +29,7 @@ def compare_concordance_with_bootstrap(event_time,
             event_time[idx], event_indicator[idx], score_y[idx]
         )
         samples.append(concordance_x_bootstrap - concordance_y_bootstrap)
-    std = np.std(samples)
+    std = np.sqrt(np.var(samples))
     zscore = diff / std
     pval = 1. - sp.stats.norm.cdf(np.abs(zscore))
 
