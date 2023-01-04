@@ -51,7 +51,7 @@ def _compute_vardiff(time, status, score_y, score_z):
     timeX = np.asarray(time).astype(np.float64)
     timeX = timeX.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
 
-    statusX = np.asarray(status).astype(int)
+    statusX = np.asarray(status).astype(np.int32)
     statusX = statusX.ctypes.data_as(ctypes.POINTER(ctypes.c_int))
 
     scoreY = np.asarray(score_y).astype(np.float64)
@@ -80,7 +80,7 @@ def _compute_vardiff(time, status, score_y, score_z):
     _m = np.asarray([[var_t13, cov_t1113], [cov_t1113, var_t11]])
     est_varCxz = np.matmul(_v3, np.matmul(_m, _v3)) / 4.
 
-    _m = np.asarray([[cov_t1213, cov_t1113], [cov_t1112, var_t11]])
+    _m = np.asarray([[cov_t1213, cov_t1112], [cov_t1113, var_t11]])
     est_cov = np.matmul(_v2, np.matmul(_m, _v3)) / 4.
 
     est_vardiff_c = est_varCxy + est_varCxz - 2 * est_cov
