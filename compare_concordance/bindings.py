@@ -1,15 +1,15 @@
 import os
 
 import ctypes
-from ctypes import cdll
+from ctypes import cdll, util
+
+import pathlib
 
 import numpy as np
 
-compareC = cdll.LoadLibrary(
-    os.path.join(os.path.dirname(__file__),
-                 '..',
-                 'compareC.cpython-36m-x86_64-linux-gnu.so')
-)
+
+libfile = pathlib.Path(__file__).parent / "compareC.so"
+compareC = cdll.LoadLibrary(str(libfile))
 
 
 compareC.TauXX.argtypes = [ctypes.POINTER(ctypes.c_double),
