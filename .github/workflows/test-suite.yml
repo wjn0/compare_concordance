@@ -1,0 +1,25 @@
+name: Test suite
+on: push
+
+jobs:
+    pytest:
+        runs-on: ubuntu-latest
+        container: python:3.7.6-slim
+        steps:
+            - name: Check out server repository
+              uses: actions/checkout@v3
+
+            - name: Install builddeps
+              run: python3 -m pip install build black
+
+            - name: Build package
+              run: python3 -m build
+
+            - name: Install package
+              run: python3 -m pip install dist/*.whl
+
+            - name: Black
+              run: python3 -m black --check compare_concordance/
+
+            - name: Run test suite
+              run: PYTHONPATH=. python3 -m unittest test

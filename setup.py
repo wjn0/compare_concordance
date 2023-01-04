@@ -1,4 +1,4 @@
-import setuptools
+from setuptools import find_packages, setup
 
 from distutils.extension import Extension
 from distutils.command.build_ext import build_ext as build_ext_orig
@@ -25,14 +25,14 @@ class build_ext(build_ext_orig):
         return super().get_ext_filename(ext_name)
 
 
-compareC = CTypesExtension("compareC",
+compareC = CTypesExtension("compare_concordance.compareC",
                            sources=["compare_concordance/compareC.c"],
                            extra_compile_args=["-fPIC"])
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="compare_concordance",
     version="0.0.1",
     author="Walter Nelson",
@@ -41,7 +41,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/wjn0/compare_concordance",
-    packages=setuptools.find_packages(),
+    packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
