@@ -4,10 +4,14 @@ on: push
 jobs:
     pytest:
         runs-on: ubuntu-latest
-        container: python:3.7.6-slim
+        container: python:3.11.0-slim
         steps:
             - name: Check out server repository
               uses: actions/checkout@v3
+
+            - name: Install system builddeps
+              run: |
+                  apt-get update && apt-get install -y build-essential
 
             - name: Install builddeps
               run: python3 -m pip install build black
@@ -21,5 +25,8 @@ jobs:
             - name: Black
               run: python3 -m black --check compare_concordance/
 
+            # Hack so the local library version without the built extension is ignored
+            # when running tests
             - name: Run test suite
-              run: PYTHONPATH=. python3 -m unittest test
+              run: |
+                  mv compare_concordance noop && python3 -m unittest test && mv noop compare_concordance
