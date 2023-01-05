@@ -7,7 +7,7 @@ packages = ["compare_concordance"]
 
 [project]
 name = "compare_concordance"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Walter Nelson", email="walterj.nelson@mail.utoronto.ca" },
 ]
