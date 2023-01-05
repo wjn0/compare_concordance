@@ -6,7 +6,15 @@ from compare_concordance import compare_concordance
 
 
 class TestCompareConcordance(unittest.TestCase):
+    """
+    Test the closed-form concordance approach.
+    """
+
     def test_compare_concordance(self):
+        """
+        Test that the function runs, implying that the extension built
+        successfully.
+        """
         n = 1000
         time = np.random.choice(1000, size=n)
         status = np.random.choice(2, size=n)
