@@ -21,4 +21,4 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
       run: |
           python3 -m build
-          twine upload build/*.{whl,tar.gz}
+          twine upload dist/*.{whl,tar.gz}
