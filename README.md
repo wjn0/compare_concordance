@@ -6,15 +6,9 @@ This Python package implements a statistical test for the comparison of correlat
 Installation
 ------------
 
-First, build the C library:
+This package can be installed via `pip`:
 
-    $ python3 setup.py build_ext
-
-Then, install using Pip:
-
-    $ pip3 install .
-
-This has been tested on 64-bit Linux with GCC version 7.5.0 and Python 3.6. If the installation step fails, it may be because your system names the .so file differently than expected.
+    $ python3 -m pip install compare_concordance
 
 Usage
 -----
