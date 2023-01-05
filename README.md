@@ -6,9 +6,9 @@ This Python package implements a statistical test for the comparison of correlat
 Installation
 ------------
 
-This package can be installed via `pip`:
+This package can be installed via Pip:
 
-    $ python3 -m pip install compare_concordance
+    $ pip install compare_concordance
 
 Usage
 -----
@@ -19,13 +19,18 @@ from compare_concordance import compare_concordance
 scores_1 = model1.predict(x)
 scores_2 = model2.predict(x)
 
-concordance_1, concordance2, difference, zscore, pvalue = compare_concordance(
+concordance_1, concordance_2, difference, zscore, pvalue = compare_concordance(
     y['time'],
     y['status'],
     scores_1,
     scores_2
 )
 ```
+
+Motivation
+----------
+
+When one has two risk scores they wish to evaluate with respect to a right-censored survival outcome, the two scores are likely to be correlated. That is, a patient deemed higher-risk by one score is likely also deemed higher-risk by the other score. Therefore, when assessing the statistical significance of the difference in c-index of the two risk scores, the variance estimate will be closer to the true variance (lower) if you account for this correlation (conferring higher power). Kang et al. (2015) provides a closed-form for the variance. This is a simple port of the authors' R package to Python, with NumPy-compatible bindings for their existing C code and a Python implementation of the baseline they compare to (bootstrapping).
 
 Citation
 --------
@@ -47,3 +52,4 @@ Citation
       url = {http://dx.doi.org/10.1002/sim.6370},
     }
 
+Please also consider citing this repository if you use this implementation.
